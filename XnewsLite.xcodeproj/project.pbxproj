@@ -1,0 +1,270 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1BCB8487142D554800A15ED6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BCB8486142D554800A15ED6 /* UIKit.framework */; };
+		1BCB8489142D554800A15ED6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BCB8488142D554800A15ED6 /* Foundation.framework */; };
+		1BCB848B142D554800A15ED6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BCB848A142D554800A15ED6 /* CoreGraphics.framework */; };
+		1BCB8491142D554800A15ED6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1BCB848F142D554800A15ED6 /* InfoPlist.strings */; };
+		1BCB8493142D554800A15ED6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BCB8492142D554800A15ED6 /* main.m */; };
+		1BCB8497142D554800A15ED6 /* XnewsLiteAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BCB8496142D554800A15ED6 /* XnewsLiteAppDelegate.m */; };
+		1BCB849A142D554800A15ED6 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BCB8498142D554800A15ED6 /* MainWindow.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1BCB8482142D554800A15ED6 /* XnewsLite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XnewsLite.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1BCB8486142D554800A15ED6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		1BCB8488142D554800A15ED6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1BCB848A142D554800A15ED6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		1BCB848E142D554800A15ED6 /* XnewsLite-Info.plist */ = {isa = PBXFileReference; path = "XnewsLite-Info.plist"; sourceTree = "<group>"; };
+		1BCB8490142D554800A15ED6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1BCB8492142D554800A15ED6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		1BCB8494142D554800A15ED6 /* XnewsLite-Prefix.pch */ = {isa = PBXFileReference; path = "XnewsLite-Prefix.pch"; sourceTree = "<group>"; };
+		1BCB8495142D554800A15ED6 /* XnewsLiteAppDelegate.h */ = {isa = PBXFileReference; path = XnewsLiteAppDelegate.h; sourceTree = "<group>"; };
+		1BCB8496142D554800A15ED6 /* XnewsLiteAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XnewsLiteAppDelegate.m; sourceTree = "<group>"; };
+		1BCB8499142D554800A15ED6 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1BCB847F142D554800A15ED6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1BCB8487142D554800A15ED6 /* UIKit.framework in Frameworks */,
+				1BCB8489142D554800A15ED6 /* Foundation.framework in Frameworks */,
+				1BCB848B142D554800A15ED6 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1BCB8477142D554800A15ED6 = {
+			isa = PBXGroup;
+			children = (
+				1BCB848C142D554800A15ED6 /* XnewsLite */,
+				1BCB8485142D554800A15ED6 /* Frameworks */,
+				1BCB8483142D554800A15ED6 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1BCB8483142D554800A15ED6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1BCB8482142D554800A15ED6 /* XnewsLite.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1BCB8485142D554800A15ED6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1BCB8486142D554800A15ED6 /* UIKit.framework */,
+				1BCB8488142D554800A15ED6 /* Foundation.framework */,
+				1BCB848A142D554800A15ED6 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1BCB848C142D554800A15ED6 /* XnewsLite */ = {
+			isa = PBXGroup;
+			children = (
+				1BCB8495142D554800A15ED6 /* XnewsLiteAppDelegate.h */,
+				1BCB8496142D554800A15ED6 /* XnewsLiteAppDelegate.m */,
+				1BCB8498142D554800A15ED6 /* MainWindow.xib */,
+				1BCB848D142D554800A15ED6 /* Supporting Files */,
+			);
+			path = XnewsLite;
+			sourceTree = "<group>";
+		};
+		1BCB848D142D554800A15ED6 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1BCB848E142D554800A15ED6 /* XnewsLite-Info.plist */,
+				1BCB848F142D554800A15ED6 /* InfoPlist.strings */,
+				1BCB8492142D554800A15ED6 /* main.m */,
+				1BCB8494142D554800A15ED6 /* XnewsLite-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1BCB8481142D554800A15ED6 /* XnewsLite */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1BCB849D142D554800A15ED6 /* Build configuration list for PBXNativeTarget "XnewsLite" */;
+			buildPhases = (
+				1BCB847E142D554800A15ED6 /* Sources */,
+				1BCB847F142D554800A15ED6 /* Frameworks */,
+				1BCB8480142D554800A15ED6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = XnewsLite;
+			productName = XnewsLite;
+			productReference = 1BCB8482142D554800A15ED6 /* XnewsLite.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1BCB8479142D554800A15ED6 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 1BCB847C142D554800A15ED6 /* Build configuration list for PBXProject "XnewsLite" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 1BCB8477142D554800A15ED6;
+			productRefGroup = 1BCB8483142D554800A15ED6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1BCB8481142D554800A15ED6 /* XnewsLite */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1BCB8480142D554800A15ED6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1BCB8491142D554800A15ED6 /* InfoPlist.strings in Resources */,
+				1BCB849A142D554800A15ED6 /* MainWindow.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1BCB847E142D554800A15ED6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1BCB8493142D554800A15ED6 /* main.m in Sources */,
+				1BCB8497142D554800A15ED6 /* XnewsLiteAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		1BCB848F142D554800A15ED6 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1BCB8490142D554800A15ED6 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		1BCB8498142D554800A15ED6 /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1BCB8499142D554800A15ED6 /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1BCB849B142D554800A15ED6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		1BCB849C142D554800A15ED6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1BCB849E142D554800A15ED6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "XnewsLite/XnewsLite-Prefix.pch";
+				INFOPLIST_FILE = "XnewsLite/XnewsLite-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		1BCB849F142D554800A15ED6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "XnewsLite/XnewsLite-Prefix.pch";
+				INFOPLIST_FILE = "XnewsLite/XnewsLite-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1BCB847C142D554800A15ED6 /* Build configuration list for PBXProject "XnewsLite" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1BCB849B142D554800A15ED6 /* Debug */,
+				1BCB849C142D554800A15ED6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1BCB849D142D554800A15ED6 /* Build configuration list for PBXNativeTarget "XnewsLite" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1BCB849E142D554800A15ED6 /* Debug */,
+				1BCB849F142D554800A15ED6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1BCB8479142D554800A15ED6 /* Project object */;
+}
