@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NewsCellController : UIViewController
+@interface NewsBodyController : UIViewController
+{
+  UIWebView *wview;
+  NSMutableString *cellurl;  
+}
 
+@property(retain) UIWebView *wview;
+@property(retain) NSMutableString *cellurl;
 @end

@@ -6,9 +6,25 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "NewsCellController.h"
+#import "NewsBodyController.h"
 
-@implementation NewsCellController
+@implementation NewsBodyController
+
+@synthesize wview, cellurl;
+
+
+-(void) hideTabBar
+{
+    
+    for(UIView *view in self.view.subviews)
+    {
+        if([view isKindOfClass:[UITabBar class]])
+        {
+            view.hidden = YES;
+            break;
+        }
+    }
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -32,7 +48,20 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+
+    wview = [[UIWebView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];
+    [wview scalesPageToFit];
+    self.view = wview;
+
+    //Do any additional setup after loading the view from its nib.
+}
+
+-(void) viewWillAppear:(BOOL)animated
+{
+    self.navigationItem.title = @"Back";
+    cellurl = (NSMutableString *)[cellurl stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    NSLog(@"print out the url:%@",cellurl);
+    [wview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:cellurl]]];  
 }
 
 - (void)viewDidUnload

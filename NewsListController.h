@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
+#import <libxml/HTMLparser.h>
 #import "NewsBodyController.h"
 #include "NewsCell.h"
 
@@ -15,12 +16,11 @@
     NSMutableArray *newsdata;
     UINib *cellNib;
     NewsCell *tmpCell;
-    NSURLConnection *connector;
     NSXMLParser *xmlParser;
     NSMutableData *receivedData;
     NSMutableDictionary *oneNews;
     NSMutableString *currentElementvalue;
-    BOOL httpfinished;
+    NSLock *lock;
 }
 
 @property (nonatomic, retain) NSMutableArray *newsdata;

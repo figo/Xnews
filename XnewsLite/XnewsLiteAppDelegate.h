@@ -7,8 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SettingController.h"
+#import "NewsListController.h"
 
-@interface XnewsLiteAppDelegate : NSObject <UIApplicationDelegate>
+
+@interface XnewsLiteAppDelegate : NSObject <UIApplicationDelegate>{
+@public
+    UITabBarController *tab;
+    UINavigationController *nav;
+    SettingController *setting;
+    NewsListController *newslist;
+    NSArray * controllers;
+}
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 

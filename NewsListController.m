@@ -36,12 +36,9 @@
 {
     NSString * ggurl = @"http://api.usatoday.com/open/articles/topnews?api_key=w883u462b4v9k8d3vvhdxtqp";
     NSURLRequest *urlq =[NSURLRequest requestWithURL:[NSURL URLWithString:ggurl] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:120];
-    if(connector == nil){
-        connector = [[NSURLConnection alloc] initWithRequest:urlq delegate:self];
-    }
-    if (connector){
-        receivedData = [[NSMutableData data] retain];
-    } else{
+    receivedData = [[NSMutableData data] retain];
+    if([[NSURLConnection alloc] initWithRequest:urlq delegate:self] == nil){
+        [receivedData release];
         NSLog(@"Connection setup failed");
     }
 
@@ -54,17 +51,27 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    httpfinished = FALSE;
+    
+    
+    /*
+    //multi thread, create a download block and download queue
+    receivedData = [[NSMutableData data] retain];
+    dispatch_queue_t downloadQueue = dispatch_queue_create("download_queue", NULL);
+    dispatch_async(downloadQueue,^{
+        NSString * ggurl = @"http://api.usatoday.com/open/articles/topnews?api_key=w883u462b4v9k8d3vvhdxtqp";
+        NSURLRequest *urlq =[NSURLRequest requestWithURL:[NSURL URLWithString:ggurl] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:120];
+        if([[NSURLConnection alloc] initWithRequest:urlq delegate:self] == nil){
+            [receivedData release];
+            NSLog(@"Connection setup failed");
+        }
+    });
+    //dispatch_release(downloadQueue);
+    */
+    
+    lock = [[NSLock alloc] init];
+    [self downloadNewsFromWebsite];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    //NSString *rootPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask,YES) objectAtIndex:0];
-    //NSString *dataPath =[rootPath stringByAppendingPathComponent:@"Data.plist"];
-    //if(![[NSFileManager defaultManager] fileExistsAtPath:dataPath]){
-    
-    
     
     /*  read from plist file
     NSString *dataPath = [[NSBundle mainBundle] pathForResource:@"Data" ofType:@"plist"];
@@ -73,18 +80,12 @@
     }
     self.data = [NSArray arrayWithContentsOfFile:dataPath];
     */
-    
-    [self downloadNewsFromWebsite];
-    //while (!newsdata){};
-    
 }
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
+    self.tmpCell = nil;
 }
 
 
@@ -120,16 +121,11 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-
-    // Return the number of sections.
-    //return newsdata.count;
-    return 5;
+    return newsdata.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-
-    // Return the number of rows in the section.
     return 1;
 }
 
@@ -144,10 +140,8 @@
         [self.cellNib instantiateWithOwner:self options:nil];
         cell = tmpCell;
         self.tmpCell = nil;
-        //[cell autorelease];
     }
     
-    //while(newsdata == nil){};
     
     NSDictionary *item = (NSDictionary *)[newsdata objectAtIndex:indexPath.section];
     //cell.textLabel.text = [item objectForKey:@"head"];
@@ -157,7 +151,7 @@
     //UIImage *theImage = [UIImage imageWithContentsOfFile:path];
     
     //[cell seticon:theImage];
-    [cell setbody:[item objectForKey:@"title"]];
+    [cell setbody:[[item objectForKey:@"title"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
      
     return cell;
 }
@@ -166,7 +160,7 @@
 
 -(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath: (NSIndexPath *)indexPath
 {
-    return 120;
+    return 100;
 }
 
 
@@ -248,7 +242,6 @@
 
 -(void) connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
-    [connector release];
     [receivedData release];
 }
 
@@ -262,8 +255,6 @@
     if(![xmlParser parse]){
         newsdata = nil;
     }
-    
-    [connector release];
     [receivedData release];
 }
 
@@ -289,11 +280,13 @@
     
     
     if([elementName isEqualToString:@"rss"]){
-        httpfinished = TRUE;
+        [self.tableView reloadData];
     }    
     
     if([elementName isEqualToString:@"item"]){
+        [lock lock];
         [newsdata addObject:oneNews];
+        [lock unlock];
     }else{
         [oneNews setValue:currentElementvalue forKey:elementName];
     }
@@ -307,9 +300,9 @@
     [newsdata release];
     [cellNib release];
     [tmpCell release];
-    [connector release];
     [xmlParser release];
     [receivedData release];
+    [lock release];
     [super dealloc];
 }
 

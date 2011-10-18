@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B274F70143F628E0058A592 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B274F6F143F628E0058A592 /* libxml2.dylib */; };
 		1B41178D14324F9000CFCB90 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B41178A14324F9000CFCB90 /* 1.png */; };
 		1B41178E14324F9000CFCB90 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B41178B14324F9000CFCB90 /* 2.png */; };
 		1B41178F14324F9000CFCB90 /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B41178C14324F9000CFCB90 /* 3.png */; };
@@ -31,6 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1B274F6F143F628E0058A592 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		1B41178A14324F9000CFCB90 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 1.png; path = images/1.png; sourceTree = SOURCE_ROOT; };
 		1B41178B14324F9000CFCB90 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 2.png; path = images/2.png; sourceTree = SOURCE_ROOT; };
 		1B41178C14324F9000CFCB90 /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 3.png; path = images/3.png; sourceTree = SOURCE_ROOT; };
@@ -67,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B274F70143F628E0058A592 /* libxml2.dylib in Frameworks */,
 				1BCB8487142D554800A15ED6 /* UIKit.framework in Frameworks */,
 				1BCB8489142D554800A15ED6 /* Foundation.framework in Frameworks */,
 				1BCB848B142D554800A15ED6 /* CoreGraphics.framework in Frameworks */,
@@ -76,9 +79,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1B274F6D143E6C970058A592 /* html_handle */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = html_handle;
+			sourceTree = "<group>";
+		};
 		1BCB8477142D554800A15ED6 = {
 			isa = PBXGroup;
 			children = (
+				1B274F6F143F628E0058A592 /* libxml2.dylib */,
 				1BCB848C142D554800A15ED6 /* XnewsLite */,
 				1BCB8485142D554800A15ED6 /* Frameworks */,
 				1BCB8483142D554800A15ED6 /* Products */,
@@ -114,6 +125,7 @@
 				1BCB8496142D554800A15ED6 /* XnewsLiteAppDelegate.m */,
 				1BCB84A0142D566500A15ED6 /* SettingController.h */,
 				1BCB84A1142D566500A15ED6 /* SettingController.m */,
+				1B274F6D143E6C970058A592 /* html_handle */,
 				1BEAF19D143100A600D003B8 /* cell */,
 				1BEAF17F1430F64100D003B8 /* Resources */,
 				1BCB84A5142D568000A15ED6 /* xib */,
@@ -287,6 +299,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				"PRELINK_LIBS[arch=*]" = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -315,8 +328,13 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "XnewsLite/XnewsLite-Prefix.pch";
+				"HEADER_SEARCH_PATHS[arch=*]" = /usr/include/libxml2;
 				INFOPLIST_FILE = "XnewsLite/XnewsLite-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 3.2.2;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(DEVELOPER_DIR)/Library/PrivateFrameworks/InstrumentsPlugIn.framework/Versions/A\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -327,8 +345,13 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "XnewsLite/XnewsLite-Prefix.pch";
+				"HEADER_SEARCH_PATHS[arch=*]" = /usr/include/libxml2;
 				INFOPLIST_FILE = "XnewsLite/XnewsLite-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 3.2.2;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(DEVELOPER_DIR)/Library/PrivateFrameworks/InstrumentsPlugIn.framework/Versions/A\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

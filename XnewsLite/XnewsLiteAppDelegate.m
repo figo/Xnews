@@ -15,6 +15,22 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    tab = [[UITabBarController alloc] init];
+    nav = [[UINavigationController alloc] init];
+    setting = [[SettingController alloc] init];
+    newslist = [[NewsListController alloc] init];
+    
+    controllers = [[NSArray alloc] initWithObjects:nav,setting,nil]; 
+    [tab setViewControllers:controllers animated:YES];
+    
+    nav.tabBarItem.title = @"News List";
+    newslist.navigationItem.title = @"USA Today";
+    [nav pushViewController:newslist animated:YES];
+    [newslist release];
+    
+    setting.tabBarItem.title = @"Setting";
+    
+    [self.window addSubview:tab.view];
     [self.window makeKeyAndVisible];
     return YES;
 }
@@ -60,6 +76,10 @@
 
 - (void)dealloc
 {
+    [nav release];
+    [setting release];
+    [tab release];
+    [controllers release];
     [_window release];
     [super dealloc];
 }
