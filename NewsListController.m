@@ -85,18 +85,44 @@
         }
         
         HTMLNode *bodyNode = [newsdetailParser body];
-        bodyNode = [bodyNode findChildOfClass:@"ppy-imglist"];
-        bodyNode = [bodyNode findChildTag:@"img"];
-        NSString *imageURL = [bodyNode getAttributeNamed:@"src"];
+        
+        
+        
+        //get the image
+        HTMLNode *imgNode = [bodyNode findChildOfClass:@"ppy-imglist"];
+        imgNode = [imgNode findChildTag:@"img"];
+        NSString *imageURL = [imgNode getAttributeNamed:@"src"];
         
         if (imageURL == nil){
             imageURL = @"NONE";
         }
         imageURL = [imageURL stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-        NSMutableDictionary *oneitem = [[NSMutableDictionary alloc] initWithCapacity:1];
-        [oneitem setObject:imageURL forKey:@"image"];
-         NSLog(@"image url:%@", imageURL);
-        [newsdetail insertObject:imageURL atIndex:int_array_index];
+        
+        
+        //get the news body words
+        NSMutableString *newsBodyContent = [[NSMutableString alloc] initWithCapacity:2000];
+        HTMLNode *firstpara = [bodyNode findChildOfClass:@"firstParagraph"];
+        if(firstpara.contents){
+            [newsBodyContent appendString:@"<p>"];
+            [newsBodyContent appendString:[firstpara contents]];
+            [newsBodyContent appendString:@"</p>"];
+        }
+        NSArray *contentNodes = [bodyNode findChildrenOfClass:@"inside-copy"];
+        for (HTMLNode *contentNode in contentNodes) {
+            if ([contentNode contents]) {
+                [newsBodyContent appendString:@"<p>"];
+                [newsBodyContent appendString:[contentNode contents]];
+                [newsBodyContent appendString:@"</p>"];
+            }
+        }
+        
+        
+        
+        NSMutableDictionary *oneitem = [[NSMutableDictionary alloc] initWithCapacity:2];
+        [oneitem setObject:imageURL forKey:@"img_url"];
+        [oneitem setObject:newsBodyContent forKey:@"body"];
+         NSLog(@"image url:%@ \n new body: %@\n", imageURL,newsBodyContent);
+        [newsdetail addObject:oneitem];
     }
     newsdetailParser = nil;
     bool_newsdetail_finished = TRUE;
@@ -238,15 +264,18 @@
     
     
     NSDictionary *item = (NSDictionary *)[newsdata objectAtIndex:indexPath.section];
-    //cell.textLabel.text = [item objectForKey:@"head"];
-    //cell.detailTextLabel.text = [item objectForKey:@"sub"];
+    if(item){
+        [cell setbody:[[item valueForKey:@"title"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
+    }
     
-    //NSString *path = [[NSBundle mainBundle] pathForResource:[item objectForKey:@"pic"] ofType:@"png"];
-    //UIImage *theImage = [UIImage imageWithContentsOfFile:path];
+    NSDictionary *detailitem = (NSDictionary *)[newsdetail objectAtIndex:indexPath.section];
+    NSString *path = [detailitem valueForKey:@"img_url"];
     
-    //[cell seticon:theImage];
-    [cell setbody:[[item objectForKey:@"title"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
-     
+    if(path && path != @"NONE"){
+        UIImage *theImage = [[UIImage alloc] initWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:path]]];
+        [cell seticon:theImage];
+    }
+    
     return cell;
 }
 
@@ -314,6 +343,8 @@
     NewsBodyController *cellController = [[NewsBodyController alloc] init];
     NSDictionary *item = (NSDictionary *)[newsdata objectAtIndex:indexPath.section];
     cellController.cellurl = [item objectForKey:@"link"];  
+    item = (NSDictionary *)[newsdetail objectAtIndex:indexPath.section];
+    cellController.cellnewsbody = [item objectForKey:@"body"];
     [self.navigationController pushViewController:cellController animated:YES];
     [cellController release];
     //[self.tabBarController hidesBottomBarWhenPushed];
@@ -397,9 +428,6 @@
     [newsdata release];
     [cellNib release];
     [tmpCell release];
-    //[xmlParser release];
-    //[receivedData release];
-    //[lock release];
     [super dealloc];
 }
 

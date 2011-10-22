@@ -10,7 +10,7 @@
 
 @implementation NewsBodyController
 
-@synthesize wview, cellurl;
+@synthesize wview, tview,cellurl,cellnewsbody;
 
 
 -(void) hideTabBar
@@ -51,17 +51,25 @@
 
     wview = [[UIWebView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];
     [wview scalesPageToFit];
+    [wview loadHTMLString:cellnewsbody baseURL:nil];
+    //[wview loadData:[cellnewsbody dataUsingEncoding:NSUTF8StringEncoding] MIMEType:@"text" textEncodingName:@"utf-8" baseURL:nil];
     self.view = wview;
-
+    //NSLog(@"print out the url:%@ \n body: %@",cellurl,cellnewsbody);
     //Do any additional setup after loading the view from its nib.
+
+    
+    /*  UITextView to display content
+    tview = [[UITextView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];
+    tview.text = cellnewsbody;
+    [tview setFont:[UIFont fontWithName:@"Arial" size:17]];
+    self.view = tview;*/
 }
 
 -(void) viewWillAppear:(BOOL)animated
 {
     self.navigationItem.title = @"Back";
-    cellurl = (NSMutableString *)[cellurl stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    NSLog(@"print out the url:%@",cellurl);
-    [wview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:cellurl]]];  
+    //cellurl = (NSMutableString *)[cellurl stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    //[wview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:cellurl]]];  
 }
 
 - (void)viewDidUnload

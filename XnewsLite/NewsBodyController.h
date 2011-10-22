@@ -11,9 +11,12 @@
 @interface NewsBodyController : UIViewController
 {
   UIWebView *wview;
+  UITextView *tview;
   NSMutableString *cellurl;  
+  NSMutableString *cellnewsbody;
 }
 
 @property(retain) UIWebView *wview;
-@property(retain) NSMutableString *cellurl;
+@property(retain) UITextView *tview;
+@property(retain) NSMutableString *cellurl, *cellnewsbody;
 @end
