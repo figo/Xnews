@@ -11,7 +11,7 @@
 
 @implementation NewsListController
 
-@synthesize newsdata,tmpCell,cellNib;
+@synthesize newsdata,tmpCell,cellNib,newsdetail;
 
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -27,22 +27,110 @@
 {
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
-    
     // Release any cached data, images, etc that aren't in use.
 }
 
 
-- (void)downloadNewsFromWebsite
-{
-    NSString * ggurl = @"http://api.usatoday.com/open/articles/topnews?api_key=w883u462b4v9k8d3vvhdxtqp";
-    NSURLRequest *urlq =[NSURLRequest requestWithURL:[NSURL URLWithString:ggurl] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:120];
-    receivedData = [[NSMutableData data] retain];
-    if([[NSURLConnection alloc] initWithRequest:urlq delegate:self] == nil){
-        [receivedData release];
-        NSLog(@"Connection setup failed");
-    }
 
+//parse the xml file get the USA today top news list
+//data structure will be Array of node, each node has such a format below:
+//           title       ->   *****
+//           link        ->   *****
+//           description ->   *****
+//           guiid       ->   *****
+-(void)downloadlistFinished{
+    
+    if(!listFetcher.results )
+    {
+        NSLog(@"no data return");
+    }else
+    {
+        XPathResultNode *first_level_node, *second_level_node;
+        NSMutableDictionary *oneitem;
+        NSArray *listchildnodeAarray;
+        newsdata = [[NSMutableArray alloc] initWithCapacity:[listFetcher.results count]];
+        for (first_level_node in listFetcher.results){
+            listchildnodeAarray = [first_level_node childNodes];
+            oneitem = [[[NSMutableDictionary alloc] initWithCapacity:[listchildnodeAarray count]] autorelease];
+            
+            for(second_level_node in listchildnodeAarray){
+                [oneitem setObject:[second_level_node contentString] forKey:[second_level_node name]];
+            }
+            [newsdata addObject:oneitem];
+        }
+        
+        [self get_news_detail:newsdata]; 
+        [self.tableView reloadData];
+        
+    }
 }
+
+
+
+
+
+//pasrse the html file for each news, get the image link, and words content of each news
+//result would be dictionary with key: link and content
+-(void)downloaddetailFinished{
+    if(newsdetailFetcher.data == nil)
+    {
+        NSLog(@"no data return");
+    }else
+    {
+        
+        NSError *error = nil;
+        newsdetailParser = [[HTMLParser alloc] initWithData:newsdetailFetcher.data error:&error];
+        if(error){
+            NSLog(@"failed to init the parser:%@",error);
+        }
+        
+        HTMLNode *bodyNode = [newsdetailParser body];
+        bodyNode = [bodyNode findChildOfClass:@"ppy-imglist"];
+        bodyNode = [bodyNode findChildTag:@"img"];
+        NSString *imageURL = [bodyNode getAttributeNamed:@"src"];
+        
+        if (imageURL == nil){
+            imageURL = @"NONE";
+        }
+        imageURL = [imageURL stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        NSMutableDictionary *oneitem = [[NSMutableDictionary alloc] initWithCapacity:1];
+        [oneitem setObject:imageURL forKey:@"image"];
+         NSLog(@"image url:%@", imageURL);
+        [newsdetail insertObject:imageURL atIndex:int_array_index];
+    }
+    newsdetailParser = nil;
+    bool_newsdetail_finished = TRUE;
+}
+
+
+//data is an array of dictionary, dictionary has keyword "link"
+- (void)get_news_detail:(NSMutableArray *)data
+{
+    
+    NSMutableDictionary *oneitem;
+    NSRunLoop *theRL;
+    NSMutableString *url;
+    //NSString *newsdetailXPath = @"/html/body/div/div/div[@class='photo-block']/div/ul/li/img"; 
+    
+    
+    newsdetail = [[NSMutableArray alloc] initWithCapacity:[newsdata count]];
+    
+    if( data != nil ){
+        int_array_index = 0;
+        for (oneitem in data) {
+            bool_newsdetail_finished = FALSE;
+            url = (NSMutableString *)[[oneitem objectForKey:@"link"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+            //NSLog(@"newsdetail url:%@", url);
+            newsdetailFetcher = [[HTTPFetcher alloc] initWithURLString:url receiver:self action:@selector(downloaddetailFinished)];
+            [newsdetailFetcher start];
+            theRL = [NSRunLoop currentRunLoop];
+            while (!bool_newsdetail_finished && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
+            int_array_index++;
+            newsdetailFetcher = nil;
+        }
+    }
+}
+
 
 
 
@@ -68,8 +156,11 @@
     //dispatch_release(downloadQueue);
     */
     
-    lock = [[NSLock alloc] init];
-    [self downloadNewsFromWebsite];
+    NSString *usatoday_url = @"http://api.usatoday.com/open/articles/topnews?api_key=w883u462b4v9k8d3vvhdxtqp";
+    NSString *listXPath = @"/rss/channel/item"; 
+    listFetcher = [[XMLFetcher alloc] initWithURLString:usatoday_url xPathQuery:listXPath receiver:self action:@selector(downloadlistFinished)];
+    [listFetcher start];
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -121,7 +212,10 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return newsdata.count;
+    if(newsdata.count > 0 )
+        return newsdata.count;
+    else
+        return 10;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -225,7 +319,7 @@
     //[self.tabBarController hidesBottomBarWhenPushed];
 }
 
-
+/*
 
 //URL connection deletegation
 
@@ -294,15 +388,18 @@
     [currentElementvalue release];
     currentElementvalue = nil;
 }
+ 
+ */
+
 
 -(void) dealloc{
     
     [newsdata release];
     [cellNib release];
     [tmpCell release];
-    [xmlParser release];
-    [receivedData release];
-    [lock release];
+    //[xmlParser release];
+    //[receivedData release];
+    //[lock release];
     [super dealloc];
 }
 

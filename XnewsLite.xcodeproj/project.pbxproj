@@ -7,12 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B0DE359144E56C100263751 /* HTTPFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B0DE352144E56C100263751 /* HTTPFetcher.m */; };
+		1B0DE35B144E56C100263751 /* XMLFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B0DE356144E56C100263751 /* XMLFetcher.m */; };
+		1B0DE35C144E56C100263751 /* XPathResultNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B0DE358144E56C100263751 /* XPathResultNode.m */; };
 		1B274F70143F628E0058A592 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B274F6F143F628E0058A592 /* libxml2.dylib */; };
 		1B41178D14324F9000CFCB90 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B41178A14324F9000CFCB90 /* 1.png */; };
 		1B41178E14324F9000CFCB90 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B41178B14324F9000CFCB90 /* 2.png */; };
 		1B41178F14324F9000CFCB90 /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B41178C14324F9000CFCB90 /* 3.png */; };
 		1B7A0792142D5C45000D65CC /* NewsListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B7A0791142D5C45000D65CC /* NewsListController.m */; };
 		1B7A0796142D5DFD000D65CC /* NewsBodyController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B7A0794142D5DFD000D65CC /* NewsBodyController.m */; };
+		1BBF652414524EC100EC6813 /* HTMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BBF652314524EC100EC6813 /* HTMLNode.m */; };
+		1BBF652814524ED600EC6813 /* HTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BBF652714524ED600EC6813 /* HTMLParser.m */; };
 		1BCB8487142D554800A15ED6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BCB8486142D554800A15ED6 /* UIKit.framework */; };
 		1BCB8489142D554800A15ED6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BCB8488142D554800A15ED6 /* Foundation.framework */; };
 		1BCB848B142D554800A15ED6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BCB848A142D554800A15ED6 /* CoreGraphics.framework */; };
@@ -32,6 +37,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1B0DE351144E56C100263751 /* HTTPFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTTPFetcher.h; path = html_handle/HTTPFetcher.h; sourceTree = "<group>"; };
+		1B0DE352144E56C100263751 /* HTTPFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTTPFetcher.m; path = html_handle/HTTPFetcher.m; sourceTree = "<group>"; };
+		1B0DE355144E56C100263751 /* XMLFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XMLFetcher.h; path = html_handle/XMLFetcher.h; sourceTree = "<group>"; };
+		1B0DE356144E56C100263751 /* XMLFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XMLFetcher.m; path = html_handle/XMLFetcher.m; sourceTree = "<group>"; };
+		1B0DE357144E56C100263751 /* XPathResultNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XPathResultNode.h; path = html_handle/XPathResultNode.h; sourceTree = "<group>"; };
+		1B0DE358144E56C100263751 /* XPathResultNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XPathResultNode.m; path = html_handle/XPathResultNode.m; sourceTree = "<group>"; };
 		1B274F6F143F628E0058A592 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		1B41178A14324F9000CFCB90 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 1.png; path = images/1.png; sourceTree = SOURCE_ROOT; };
 		1B41178B14324F9000CFCB90 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 2.png; path = images/2.png; sourceTree = SOURCE_ROOT; };
@@ -40,6 +51,10 @@
 		1B7A0791142D5C45000D65CC /* NewsListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewsListController.m; path = ../NewsListController.m; sourceTree = "<group>"; };
 		1B7A0793142D5DFD000D65CC /* NewsBodyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsBodyController.h; sourceTree = "<group>"; };
 		1B7A0794142D5DFD000D65CC /* NewsBodyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsBodyController.m; sourceTree = "<group>"; };
+		1BBF652214524EC100EC6813 /* HTMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTMLNode.h; sourceTree = "<group>"; };
+		1BBF652314524EC100EC6813 /* HTMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTMLNode.m; sourceTree = "<group>"; };
+		1BBF652614524ED600EC6813 /* HTMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTMLParser.h; sourceTree = "<group>"; };
+		1BBF652714524ED600EC6813 /* HTMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTMLParser.m; sourceTree = "<group>"; };
 		1BCB8482142D554800A15ED6 /* XnewsLite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XnewsLite.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BCB8486142D554800A15ED6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		1BCB8488142D554800A15ED6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -82,6 +97,16 @@
 		1B274F6D143E6C970058A592 /* html_handle */ = {
 			isa = PBXGroup;
 			children = (
+				1B0DE351144E56C100263751 /* HTTPFetcher.h */,
+				1B0DE352144E56C100263751 /* HTTPFetcher.m */,
+				1B0DE355144E56C100263751 /* XMLFetcher.h */,
+				1B0DE356144E56C100263751 /* XMLFetcher.m */,
+				1B0DE357144E56C100263751 /* XPathResultNode.h */,
+				1B0DE358144E56C100263751 /* XPathResultNode.m */,
+				1BBF652214524EC100EC6813 /* HTMLNode.h */,
+				1BBF652314524EC100EC6813 /* HTMLNode.m */,
+				1BBF652614524ED600EC6813 /* HTMLParser.h */,
+				1BBF652714524ED600EC6813 /* HTMLParser.m */,
 			);
 			name = html_handle;
 			sourceTree = "<group>";
@@ -254,6 +279,11 @@
 				1B7A0792142D5C45000D65CC /* NewsListController.m in Sources */,
 				1B7A0796142D5DFD000D65CC /* NewsBodyController.m in Sources */,
 				1BEAF1A0143100EC00D003B8 /* NewsCell.m in Sources */,
+				1B0DE359144E56C100263751 /* HTTPFetcher.m in Sources */,
+				1B0DE35B144E56C100263751 /* XMLFetcher.m in Sources */,
+				1B0DE35C144E56C100263751 /* XPathResultNode.m in Sources */,
+				1BBF652414524EC100EC6813 /* HTMLNode.m in Sources */,
+				1BBF652814524ED600EC6813 /* HTMLParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

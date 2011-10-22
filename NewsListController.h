@@ -8,23 +8,26 @@
 
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
-#import <libxml/HTMLparser.h>
+#import "HTTPFetcher.h"
 #import "NewsBodyController.h"
 #include "NewsCell.h"
+#include "XMLFetcher.h"
+#include "HTMLParser.h"
 
-@interface NewsListController : UITableViewController <NSXMLParserDelegate> {
-    NSMutableArray *newsdata;
+@interface NewsListController : UITableViewController{
+    NSMutableArray *newsdata, *newsdetail;
     UINib *cellNib;
     NewsCell *tmpCell;
-    NSXMLParser *xmlParser;
-    NSMutableData *receivedData;
-    NSMutableDictionary *oneNews;
-    NSMutableString *currentElementvalue;
-    NSLock *lock;
+    XMLFetcher *listFetcher;
+    HTTPFetcher *newsdetailFetcher;
+    HTMLParser *newsdetailParser;
+    int int_array_index;
+    BOOL bool_newsdetail_finished;
+
 }
 
-@property (nonatomic, retain) NSMutableArray *newsdata;
+@property (nonatomic, retain) NSMutableArray *newsdata, *newsdetail;
 @property (nonatomic, retain) UINib *cellNib;
 @property (nonatomic, retain) IBOutlet NewsCell *tmpCell;
-- (void)downloadNewsFromWebsite;
+- (void)get_news_detail:(NSMutableArray *)data; 
 @end
