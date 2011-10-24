@@ -86,4 +86,13 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+- (void)dealloc
+{
+    [tview release];
+    [wview release];
+    [cellurl release];
+    [cellnewsbody release];
+    [super dealloc];
+}
+
 @end

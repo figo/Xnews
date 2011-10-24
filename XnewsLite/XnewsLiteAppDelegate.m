@@ -78,6 +78,7 @@
 {
     [nav release];
     [setting release];
+    [newslist release];
     [tab release];
     [controllers release];
     [_window release];

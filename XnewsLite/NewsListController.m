@@ -32,6 +32,7 @@
 
 
 
+
 //parse the xml file get the USA today top news list
 //data structure will be Array of node, each node has such a format below:
 //           title       ->   *****
@@ -145,7 +146,6 @@
     NSMutableDictionary *oneitem;
     NSRunLoop *theRL;
     NSMutableString *url;
-    //NSString *newsdetailXPath = @"/html/body/div/div/div[@class='photo-block']/div/ul/li/img"; 
     
     
     newsdetail = [[NSMutableArray alloc] initWithCapacity:[newsdata count]];
@@ -175,33 +175,14 @@
 {
     [super viewDidLoad];
     
-    
-    /*
-    //multi thread, create a download block and download queue
-    receivedData = [[NSMutableData data] retain];
-    dispatch_queue_t downloadQueue = dispatch_queue_create("download_queue", NULL);
-    dispatch_async(downloadQueue,^{
-        NSString * ggurl = @"http://api.usatoday.com/open/articles/topnews?api_key=w883u462b4v9k8d3vvhdxtqp";
-        NSURLRequest *urlq =[NSURLRequest requestWithURL:[NSURL URLWithString:ggurl] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:120];
-        if([[NSURLConnection alloc] initWithRequest:urlq delegate:self] == nil){
-            [receivedData release];
-            NSLog(@"Connection setup failed");
-        }
-    });
-    //dispatch_release(downloadQueue);
-    */
-    
-    
     //display the progress view here.
     progressView = [[UIView alloc] initWithFrame:self.tableView.frame];
     UIActivityIndicatorView *ac = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
     ac.center = [progressView center];
     [progressView addSubview:ac];
-    progressView.opaque = NO;
     [ac startAnimating];
     [ac release];
     [self.tableView addSubview:progressView];
-    self.tableView.opaque = YES;
     [progressView release];
     
     NSString *usatoday_url = @"http://api.usatoday.com/open/articles/topnews?api_key=w883u462b4v9k8d3vvhdxtqp";
@@ -209,16 +190,27 @@
     listFetcher = [[XMLFetcher alloc] initWithURLString:usatoday_url xPathQuery:listXPath receiver:self action:@selector(downloadlistFinished)];
     [listFetcher start];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
     /*  read from plist file
     NSString *dataPath = [[NSBundle mainBundle] pathForResource:@"Data" ofType:@"plist"];
     if(![[NSFileManager defaultManager] fileExistsAtPath:dataPath]){
         dataPath = [[NSBundle mainBundle] pathForResource:@"Data" ofType:@"plist"];
     }
     self.data = [NSArray arrayWithContentsOfFile:dataPath];
+
+    //multi thread, create a download block and download queue
+    receivedData = [[NSMutableData data] retain];
+    dispatch_queue_t downloadQueue = dispatch_queue_create("download_queue", NULL);
+    dispatch_async(downloadQueue,^{
+    NSString * ggurl = @"http://api.usatoday.com/open/articles/topnews?api_key=w883u462b4v9k8d3vvhdxtqp";
+    NSURLRequest *urlq =[NSURLRequest requestWithURL:[NSURL URLWithString:ggurl] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:120];
+    if([[NSURLConnection alloc] initWithRequest:urlq delegate:self] == nil){
+        [receivedData release];
+        NSLog(@"Connection setup failed");
+    }
+    });
+    //dispatch_release(downloadQueue);
     */
+
 }
 
 - (void)viewDidUnload
@@ -241,7 +233,6 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-    //self.navigationItem.title = @"Back";
     [super viewWillDisappear:animated];
 }
 
@@ -263,7 +254,7 @@
     if(newsdata.count > 0 )
         return newsdata.count;
     else
-        return 10;
+        return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -277,7 +268,6 @@
     
     NewsCell *cell = (NewsCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-    //cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
         self.cellNib = [UINib nibWithNibName:@"NewsCell" bundle:nil];
         [self.cellNib instantiateWithOwner:self options:nil];
         cell = tmpCell;
@@ -354,14 +344,6 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     [detailViewController release];
-     */
-
     NewsBodyController *cellController = [[NewsBodyController alloc] init];
     NSDictionary *item = (NSDictionary *)[newsdata objectAtIndex:indexPath.section];
     cellController.cellurl = [item objectForKey:@"link"];  
@@ -372,84 +354,17 @@
     //[self.tabBarController hidesBottomBarWhenPushed];
 }
 
-/*
-
-//URL connection deletegation
-
--(void) connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
-{
-    [receivedData setLength:0];
-}
-
--(void) connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
-{
-    [receivedData appendData:data];
-}
-
-
--(void) connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
-{
-    [receivedData release];
-}
-
--(void) connectionDidFinishLoading:(NSURLConnection *)connection
-{
-    //NSLog(@"succeeded %d",[receivedData length]);
-    newsdata = [[NSMutableArray alloc] init];
-    xmlParser = [[NSXMLParser alloc] initWithData:receivedData];
-    [xmlParser setDelegate:self];
- 
-    if(![xmlParser parse]){
-        newsdata = nil;
-    }
-    [receivedData release];
-}
-
-//xml parser delegation
--(void) parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict
-{
-    if([elementName isEqualToString:@"item"]){
-        oneNews = [[NSMutableDictionary alloc] init];
-    }
-}
-
--(void) parser:(NSXMLParser *)parser foundCharacters:(NSString *)string
-{
-    if(!currentElementvalue){
-        currentElementvalue = [[NSMutableString alloc] initWithString:string];
-    }else{
-        [currentElementvalue appendString:string];
-    }
-}
-
--(void) parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName
-{
-    
-    
-    if([elementName isEqualToString:@"rss"]){
-        [self.tableView reloadData];
-    }    
-    
-    if([elementName isEqualToString:@"item"]){
-        [lock lock];
-        [newsdata addObject:oneNews];
-        [lock unlock];
-    }else{
-        [oneNews setValue:currentElementvalue forKey:elementName];
-    }
-    
-    [currentElementvalue release];
-    currentElementvalue = nil;
-}
- 
- */
-
 
 -(void) dealloc{
     
     [newsdata release];
+    [newsdetail release];
+    [HTTPFetcher release];
+    [XMLFetcher release];
+    [HTMLParser release];
     [cellNib release];
     [tmpCell release];
+    [progressView release];
     [super dealloc];
 }
 
