@@ -11,13 +11,10 @@
 		1B0DE35B144E56C100263751 /* XMLFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B0DE356144E56C100263751 /* XMLFetcher.m */; };
 		1B0DE35C144E56C100263751 /* XPathResultNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B0DE358144E56C100263751 /* XPathResultNode.m */; };
 		1B274F70143F628E0058A592 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B274F6F143F628E0058A592 /* libxml2.dylib */; };
-		1B41178D14324F9000CFCB90 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B41178A14324F9000CFCB90 /* 1.png */; };
-		1B41178E14324F9000CFCB90 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B41178B14324F9000CFCB90 /* 2.png */; };
-		1B41178F14324F9000CFCB90 /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B41178C14324F9000CFCB90 /* 3.png */; };
-		1B7A0792142D5C45000D65CC /* NewsListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B7A0791142D5C45000D65CC /* NewsListController.m */; };
+		1B4479D91455DB6D0007154B /* HTMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B4479D61455DB6D0007154B /* HTMLNode.m */; };
+		1B4479DA1455DB6D0007154B /* HTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B4479D81455DB6D0007154B /* HTMLParser.m */; };
 		1B7A0796142D5DFD000D65CC /* NewsBodyController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B7A0794142D5DFD000D65CC /* NewsBodyController.m */; };
-		1BBF652414524EC100EC6813 /* HTMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BBF652314524EC100EC6813 /* HTMLNode.m */; };
-		1BBF652814524ED600EC6813 /* HTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BBF652714524ED600EC6813 /* HTMLParser.m */; };
+		1BB918BD1455DB0200FFC58A /* NewsListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BB918BC1455DB0200FFC58A /* NewsListController.m */; };
 		1BCB8487142D554800A15ED6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BCB8486142D554800A15ED6 /* UIKit.framework */; };
 		1BCB8489142D554800A15ED6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BCB8488142D554800A15ED6 /* Foundation.framework */; };
 		1BCB848B142D554800A15ED6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BCB848A142D554800A15ED6 /* CoreGraphics.framework */; };
@@ -28,10 +25,6 @@
 		1BCB84A3142D566500A15ED6 /* SettingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BCB84A1142D566500A15ED6 /* SettingController.m */; };
 		1BCB84A4142D566500A15ED6 /* SettingController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BCB84A2142D566500A15ED6 /* SettingController.xib */; };
 		1BEAF17D1430F36700D003B8 /* NewsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BEAF17C1430F36700D003B8 /* NewsCell.xib */; };
-		1BEAF18E1430F69200D003B8 /* Blocks.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BEAF1811430F69200D003B8 /* Blocks.png */; };
-		1BEAF18F1430F69200D003B8 /* Checkers.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BEAF1821430F69200D003B8 /* Checkers.png */; };
-		1BEAF1901430F69200D003B8 /* Dinner.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BEAF1831430F69200D003B8 /* Dinner.png */; };
-		1BEAF1911430F69200D003B8 /* Football.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BEAF1841430F69200D003B8 /* Football.png */; };
 		1BEAF19B1430F6DD00D003B8 /* Data.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1BEAF19A1430F6DD00D003B8 /* Data.plist */; };
 		1BEAF1A0143100EC00D003B8 /* NewsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BEAF19F143100EC00D003B8 /* NewsCell.m */; };
 /* End PBXBuildFile section */
@@ -44,17 +37,14 @@
 		1B0DE357144E56C100263751 /* XPathResultNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XPathResultNode.h; path = html_handle/XPathResultNode.h; sourceTree = "<group>"; };
 		1B0DE358144E56C100263751 /* XPathResultNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XPathResultNode.m; path = html_handle/XPathResultNode.m; sourceTree = "<group>"; };
 		1B274F6F143F628E0058A592 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
-		1B41178A14324F9000CFCB90 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 1.png; path = images/1.png; sourceTree = SOURCE_ROOT; };
-		1B41178B14324F9000CFCB90 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 2.png; path = images/2.png; sourceTree = SOURCE_ROOT; };
-		1B41178C14324F9000CFCB90 /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 3.png; path = images/3.png; sourceTree = SOURCE_ROOT; };
-		1B7A0790142D5C45000D65CC /* NewsListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewsListController.h; path = ../NewsListController.h; sourceTree = "<group>"; };
-		1B7A0791142D5C45000D65CC /* NewsListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewsListController.m; path = ../NewsListController.m; sourceTree = "<group>"; };
+		1B4479D51455DB6D0007154B /* HTMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLNode.h; path = html_handle/HTMLNode.h; sourceTree = "<group>"; };
+		1B4479D61455DB6D0007154B /* HTMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTMLNode.m; path = html_handle/HTMLNode.m; sourceTree = "<group>"; };
+		1B4479D71455DB6D0007154B /* HTMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLParser.h; path = html_handle/HTMLParser.h; sourceTree = "<group>"; };
+		1B4479D81455DB6D0007154B /* HTMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTMLParser.m; path = html_handle/HTMLParser.m; sourceTree = "<group>"; };
 		1B7A0793142D5DFD000D65CC /* NewsBodyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsBodyController.h; sourceTree = "<group>"; };
 		1B7A0794142D5DFD000D65CC /* NewsBodyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsBodyController.m; sourceTree = "<group>"; };
-		1BBF652214524EC100EC6813 /* HTMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTMLNode.h; sourceTree = "<group>"; };
-		1BBF652314524EC100EC6813 /* HTMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTMLNode.m; sourceTree = "<group>"; };
-		1BBF652614524ED600EC6813 /* HTMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTMLParser.h; sourceTree = "<group>"; };
-		1BBF652714524ED600EC6813 /* HTMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTMLParser.m; sourceTree = "<group>"; };
+		1BB918BB1455DB0200FFC58A /* NewsListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsListController.h; sourceTree = "<group>"; };
+		1BB918BC1455DB0200FFC58A /* NewsListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsListController.m; sourceTree = "<group>"; };
 		1BCB8482142D554800A15ED6 /* XnewsLite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XnewsLite.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BCB8486142D554800A15ED6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		1BCB8488142D554800A15ED6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -70,10 +60,6 @@
 		1BCB84A1142D566500A15ED6 /* SettingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingController.m; sourceTree = "<group>"; };
 		1BCB84A2142D566500A15ED6 /* SettingController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingController.xib; sourceTree = "<group>"; };
 		1BEAF17C1430F36700D003B8 /* NewsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewsCell.xib; sourceTree = "<group>"; };
-		1BEAF1811430F69200D003B8 /* Blocks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Blocks.png; path = images/Blocks.png; sourceTree = SOURCE_ROOT; };
-		1BEAF1821430F69200D003B8 /* Checkers.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Checkers.png; path = images/Checkers.png; sourceTree = SOURCE_ROOT; };
-		1BEAF1831430F69200D003B8 /* Dinner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Dinner.png; path = images/Dinner.png; sourceTree = SOURCE_ROOT; };
-		1BEAF1841430F69200D003B8 /* Football.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Football.png; path = images/Football.png; sourceTree = SOURCE_ROOT; };
 		1BEAF19A1430F6DD00D003B8 /* Data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Data.plist; sourceTree = "<group>"; };
 		1BEAF19E143100EC00D003B8 /* NewsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsCell.h; sourceTree = "<group>"; };
 		1BEAF19F143100EC00D003B8 /* NewsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsCell.m; sourceTree = "<group>"; };
@@ -97,16 +83,16 @@
 		1B274F6D143E6C970058A592 /* html_handle */ = {
 			isa = PBXGroup;
 			children = (
+				1B4479D51455DB6D0007154B /* HTMLNode.h */,
+				1B4479D61455DB6D0007154B /* HTMLNode.m */,
+				1B4479D71455DB6D0007154B /* HTMLParser.h */,
+				1B4479D81455DB6D0007154B /* HTMLParser.m */,
 				1B0DE351144E56C100263751 /* HTTPFetcher.h */,
 				1B0DE352144E56C100263751 /* HTTPFetcher.m */,
 				1B0DE355144E56C100263751 /* XMLFetcher.h */,
 				1B0DE356144E56C100263751 /* XMLFetcher.m */,
 				1B0DE357144E56C100263751 /* XPathResultNode.h */,
 				1B0DE358144E56C100263751 /* XPathResultNode.m */,
-				1BBF652214524EC100EC6813 /* HTMLNode.h */,
-				1BBF652314524EC100EC6813 /* HTMLNode.m */,
-				1BBF652614524ED600EC6813 /* HTMLParser.h */,
-				1BBF652714524ED600EC6813 /* HTMLParser.m */,
 			);
 			name = html_handle;
 			sourceTree = "<group>";
@@ -142,8 +128,8 @@
 		1BCB848C142D554800A15ED6 /* XnewsLite */ = {
 			isa = PBXGroup;
 			children = (
-				1B7A0790142D5C45000D65CC /* NewsListController.h */,
-				1B7A0791142D5C45000D65CC /* NewsListController.m */,
+				1BB918BB1455DB0200FFC58A /* NewsListController.h */,
+				1BB918BC1455DB0200FFC58A /* NewsListController.m */,
 				1B7A0793142D5DFD000D65CC /* NewsBodyController.h */,
 				1B7A0794142D5DFD000D65CC /* NewsBodyController.m */,
 				1BCB8495142D554800A15ED6 /* XnewsLiteAppDelegate.h */,
@@ -184,13 +170,6 @@
 		1BEAF17F1430F64100D003B8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				1B41178B14324F9000CFCB90 /* 2.png */,
-				1B41178C14324F9000CFCB90 /* 3.png */,
-				1B41178A14324F9000CFCB90 /* 1.png */,
-				1BEAF1811430F69200D003B8 /* Blocks.png */,
-				1BEAF1821430F69200D003B8 /* Checkers.png */,
-				1BEAF1831430F69200D003B8 /* Dinner.png */,
-				1BEAF1841430F69200D003B8 /* Football.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -255,14 +234,7 @@
 				1BCB849A142D554800A15ED6 /* MainWindow.xib in Resources */,
 				1BCB84A4142D566500A15ED6 /* SettingController.xib in Resources */,
 				1BEAF17D1430F36700D003B8 /* NewsCell.xib in Resources */,
-				1BEAF18E1430F69200D003B8 /* Blocks.png in Resources */,
-				1BEAF18F1430F69200D003B8 /* Checkers.png in Resources */,
-				1BEAF1901430F69200D003B8 /* Dinner.png in Resources */,
-				1BEAF1911430F69200D003B8 /* Football.png in Resources */,
 				1BEAF19B1430F6DD00D003B8 /* Data.plist in Resources */,
-				1B41178D14324F9000CFCB90 /* 1.png in Resources */,
-				1B41178E14324F9000CFCB90 /* 2.png in Resources */,
-				1B41178F14324F9000CFCB90 /* 3.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,14 +248,14 @@
 				1BCB8493142D554800A15ED6 /* main.m in Sources */,
 				1BCB8497142D554800A15ED6 /* XnewsLiteAppDelegate.m in Sources */,
 				1BCB84A3142D566500A15ED6 /* SettingController.m in Sources */,
-				1B7A0792142D5C45000D65CC /* NewsListController.m in Sources */,
 				1B7A0796142D5DFD000D65CC /* NewsBodyController.m in Sources */,
 				1BEAF1A0143100EC00D003B8 /* NewsCell.m in Sources */,
 				1B0DE359144E56C100263751 /* HTTPFetcher.m in Sources */,
 				1B0DE35B144E56C100263751 /* XMLFetcher.m in Sources */,
 				1B0DE35C144E56C100263751 /* XPathResultNode.m in Sources */,
-				1BBF652414524EC100EC6813 /* HTMLNode.m in Sources */,
-				1BBF652814524ED600EC6813 /* HTMLParser.m in Sources */,
+				1BB918BD1455DB0200FFC58A /* NewsListController.m in Sources */,
+				1B4479D91455DB6D0007154B /* HTMLNode.m in Sources */,
+				1B4479DA1455DB6D0007154B /* HTMLParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

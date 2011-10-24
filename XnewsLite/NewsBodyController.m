@@ -67,7 +67,8 @@
 
 -(void) viewWillAppear:(BOOL)animated
 {
-    self.navigationItem.title = @"Back";
+    //self.navigationItem.leftBarButtonItem = @"Back";
+    self.navigationItem.titleView = nil;
     //cellurl = (NSMutableString *)[cellurl stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     //[wview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:cellurl]]];  
 }

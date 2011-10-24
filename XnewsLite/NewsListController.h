@@ -23,6 +23,7 @@
     HTMLParser *newsdetailParser;
     int int_array_index;
     BOOL bool_newsdetail_finished;
+    UIView *progressView;
 
 }
 

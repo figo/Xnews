@@ -60,6 +60,8 @@
         }
         
         [self get_news_detail:newsdata]; 
+        [progressView removeFromSuperview];
+        //[progressView release];
         [self.tableView reloadData];
         
     }
@@ -107,6 +109,13 @@
             [newsBodyContent appendString:[firstpara contents]];
             [newsBodyContent appendString:@"</p>"];
         }
+        
+        if ( imageURL != @"NONE"){
+            [newsBodyContent appendString:@"<img src='"];
+            [newsBodyContent appendString:imageURL];
+            [newsBodyContent appendString:@"' width='250' height='200' border='0' />"];
+        }
+        
         NSArray *contentNodes = [bodyNode findChildrenOfClass:@"inside-copy"];
         for (HTMLNode *contentNode in contentNodes) {
             if ([contentNode contents]) {
@@ -121,7 +130,7 @@
         NSMutableDictionary *oneitem = [[NSMutableDictionary alloc] initWithCapacity:2];
         [oneitem setObject:imageURL forKey:@"img_url"];
         [oneitem setObject:newsBodyContent forKey:@"body"];
-         NSLog(@"image url:%@ \n new body: %@\n", imageURL,newsBodyContent);
+        //NSLog(@"image url:%@ \n new body: %@\n", imageURL,newsBodyContent);
         [newsdetail addObject:oneitem];
     }
     newsdetailParser = nil;
@@ -182,6 +191,19 @@
     //dispatch_release(downloadQueue);
     */
     
+    
+    //display the progress view here.
+    progressView = [[UIView alloc] initWithFrame:self.tableView.frame];
+    UIActivityIndicatorView *ac = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    ac.center = [progressView center];
+    [progressView addSubview:ac];
+    progressView.opaque = NO;
+    [ac startAnimating];
+    [ac release];
+    [self.tableView addSubview:progressView];
+    self.tableView.opaque = YES;
+    [progressView release];
+    
     NSString *usatoday_url = @"http://api.usatoday.com/open/articles/topnews?api_key=w883u462b4v9k8d3vvhdxtqp";
     NSString *listXPath = @"/rss/channel/item"; 
     listFetcher = [[XMLFetcher alloc] initWithURLString:usatoday_url xPathQuery:listXPath receiver:self action:@selector(downloadlistFinished)];
@@ -219,7 +241,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-    self.navigationItem.title = @"Back";
+    //self.navigationItem.title = @"Back";
     [super viewWillDisappear:animated];
 }
 
